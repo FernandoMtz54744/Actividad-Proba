@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    
+    <title>Probabilidad</title>
+</head>
+<body>
+    <!--Cortes Lopez Jaime Alejandro; Martinez Martinez Fernando-->
+    <header>
+        <h1>Probabilidad - Distribución binomial negativa</h1>
+        <h1>Cara o Cruz</h1>
+        <h2>Problema: Calcule la probabilidad de que una persona que lanza una moneda obtenga la cara número K en el lanzamiento numero X</h2>
+    </header>
+
+    <form id="form" class="datos">
+        <div>
+            <label for="moneda">Considerar como exito:</label>
+            <select name="moneda" id="moneda">
+                <option value="Sol" selected>Sol</option>
+                <option value="Águilas">Águila</option>
+            </select>
+        </div>
+        <div>
+            <label for="k">k-ésimo éxito</label>
+            <input type="number" id="k" name="k" min="0" required>
+        </div>
+        <div>
+        <label for="x">x-ésimo ensayo</label>
+        <input type="number" max="25" min="0" id="x" name="x" required>
+        </div>
+        <input type="submit" value="calcular" class="button">
+    </form>
+
+    <div id="resultado"></div>
+
+    <div id="simulacion" hidden>
+        <div id="experimento">
+            <h2>Simulación</h2>
+        </div>
+
+        <div id="salidas">
+        </div>
+
+        <!--<div id="comprobacion"></div>-->
+    </div>
+
+        
+
+    <script src="Codigo.js"></script>
+</body>
+</html>

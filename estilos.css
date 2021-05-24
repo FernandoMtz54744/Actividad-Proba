@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+body{
+    background-color: #424242;
+    color: whitesmoke;
+    font-family: 'Rubik', sans-serif;
+}
+
+h1{
+    text-align: center;
+    margin: 0px;
+}
+
+h2{
+    text-align: center;
+}
+
+.datos{
+    background-color: #1b1b1b;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 5vh;
+    padding: 1rem;
+}
+
+.datos > input{
+    text-decoration: none;
+    border:solid #d84315;
+    background-color: transparent;
+    outline: none;
+    color: whitesmoke;
+    font-family: inherit;
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .datos > div > input{
+    text-decoration: none;
+    border:solid #d84315;
+    background-color: transparent;
+    outline: none;
+    color: whitesmoke;
+    font-family: inherit;
+    padding: 0.5rem;
+    width: 40%;
+  }
+
+  .datos > div{
+      width: 100%;
+  }
+  
+  #resultado > p {
+      text-align: center;
+      font-size: 1.5rem;
+  }
+
+  #salidas{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      height: 30vh;
+      background-color: #1b1b1b;
+      text-align: center;
+  }
+
+  #salidas > div{
+      border-bottom: solid whitesmoke;
+  }
+
+  #salidas img {
+      height: 50px;
+      animation: aparecer 1.5s;
+  }
+
+  #salidas p {
+      text-align: center;
+  }
+
+.button:hover{
+    cursor: pointer;
+    background-color: #c63f17;
+}
+
+@keyframes aparecer {
+    from{
+        transform: rotateY(0deg);
+    }
+    to{
+        transform: rotateY(1080deg);
+    }
+}
