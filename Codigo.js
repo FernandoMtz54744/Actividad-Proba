@@ -27,12 +27,13 @@ document.getElementById("form").addEventListener("submit", (event)=>{
 	console.log("ensayo [x]: "+ ensayo);
 	console.log("exito [k]: " + exito);
 	resultado = (Combinacion(ensayo,exito)*(Math.pow(0.5,exito))*(Math.pow(0.5,(ensayo-exito))))*100;
+	resultado = resultado.toFixed(4);
 	const salida = "La probabilidad de que" + " se obtenga(n) "+exito+" "+moneda + " en el lanzamiento numero "+ensayo+" es de "+resultado+"%";
 	
 	if((ensayo-exito) >= 0){
 		document.getElementById("resultado").innerHTML = `<h2>${salida}</h2>`
 		simular(ensayo, moneda, exito);
-		//repetirSimulaciones(ensayo, moneda, exito);
+		repetirSimulaciones(ensayo, moneda, exito, 10000);
 	}else{
 		document.getElementById("resultado").innerHTML = `<h2>Los ensayos deben ser mayor a los éxitos</h2>`
 	}
@@ -67,11 +68,10 @@ const lanzarMoneda = ()=>{
 	return Math.round(Math.random());
 }
 
-/*const repetirSimulaciones = (x, moneda, k) =>{
+const repetirSimulaciones = (x, moneda, k, numSim) =>{
 	//se repite el experimento como si se diera a calcular 100 veces
 	let cuentaExitosSol=0;
 	let cuentaExitosAguila=0;
-	const numSim = 10;
 
 	for(let experimento=0; experimento<=numSim; experimento++){
 		let cuentaSol = 0;
@@ -85,7 +85,6 @@ const lanzarMoneda = ()=>{
 		}
 
 		if(moneda==="Sol"){
-			console.log(experimento + "--" + cuentaSol);
 			if(cuentaSol === k){
 				cuentaExitosSol++;
 			}
@@ -97,16 +96,25 @@ const lanzarMoneda = ()=>{
 	}
 
 	if(moneda==="Sol"){
+		let resultado = (cuentaExitosSol*100/numSim)/(x/k);
+		resultado = resultado.toFixed(4);
 		const text = `<h2>Se simuló el experimento ${numSim} veces, de las cuales ${cuentaExitosSol} veces se cumplió 
-		que el sol numero ${k} fue en el lanzamiento ${x} -> ${cuentaExitosSol*100/numSim}</h2>`
+		que el sol numero ${k} fue en el lanzamiento ${x} -> ${resultado}%</h2>`
 		document.getElementById("comprobacion").innerHTML = text;
 	}else{
+		let resultado = (cuentaExitosAguila*100/numSim)/(x/k);
+		resultado = resultado.toFixed(4);
 		const text = `<h2>Se simuló el experimento ${numSim} veces, de las cuales ${cuentaExitosAguila} veces se cumplió 
-		que el Águila numero ${k} fue en el lanzamiento ${x} -> ${cuentaExitosAguila*100/numSim}</h2>`
+		que el Águila numero ${k} fue en el lanzamiento ${x} -> ${resultado}%</h2>`
 		document.getElementById("comprobacion").innerHTML = text;
 	}
-}*/
+}
 
-// function sleep(ms) {
-// 	return new Promise(resolve => setTimeout(resolve, ms));
-//   }
+document.getElementById("simular").addEventListener("click", (event)=>{
+
+	var ensayo = parseInt(document.getElementById("x").value);
+	var exito = parseInt(document.getElementById("k").value);
+	var moneda = document.getElementById("moneda").value;
+	const numSim = parseInt(document.getElementById("numSim").value);
+	repetirSimulaciones(ensayo, moneda, exito, numSim);	
+})
